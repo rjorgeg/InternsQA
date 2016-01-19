@@ -9,21 +9,35 @@ MINI TUTORIAL GIT:
  - git push origin master(master)
 
 3- Crear una rama develop (donde se haran todas las subidas de los desarrolladores con las pull request, cuando esta rama tiene el codigo estable, es cuando se hace la release en la master, es decir la subida a la master):
- - git checkout -b develop //(asi se crea una rama nueva en local (SOLO EN LOCAL) y ademas te cambias a ella(ahora estas trabajando sobre ella)) 
- - git push origin develop //(de esta manera la rama ya esta disponible en remoto)
+
+ - git checkout -b develop
+  //(asi se crea una rama nueva en local (SOLO EN LOCAL) y ademas te cambias a ella(ahora estas trabajando sobre ella)) 
+
+ - git push origin develop 
+ //(de esta manera la rama ya esta disponible en remoto)
 4- Crear nuestra rama en local:
- - git checkout -b devR //(en mi caso la he llamado asi... ;) )
+
+ - git checkout -b devR 
+ //(en mi caso la he llamado asi... ;) )
    //(Esta rama esta solo en local, y es sobre la que se trabaja, nadie mas tiene acceso a ella y cuando quiera subir algo a remoto, tiene que ser a la rama develop)
    //(crearos vosotros otra en local igual dev.. pero solo en local!)
+ - git push origin devR 
 
 5- pasos para añadir un archivo nuevo y/o alguna modificacion en un archivo existente:
+
  - git status //checkeamos todo lo que hay nuevo y/o modificado
+
  - git add . (devR)
  - git commit -m "comentario" (devR)
- - git push origin develop (devR)
+ 
  - git checkout develop 
  - git pull origin develop (develop)
- - git merge devR (develop)
+
+- git push origin devR (devR)//esto es como una copia de seguridad
+
+
+ - git checkout devR
+ - git merge develop (devR)
  	//en este punto si da un error de conflicto, asi:
  	// "Auto-merging Inicio.txt
 		CONFLICT (content): Merge conflict in Inicio.txt
@@ -31,10 +45,16 @@ MINI TUTORIAL GIT:
 	//lo que hay que hacer es:
 		- git add . (develop|MERGING)
 		- git commit -m ''comentario (develop|MERGING)
-		- git pull origin develop (develop)
-		- y ahora si....
-		  git merge devR (develop) //y ahora no deberia dar ningun error de conflicto
- - git push origin develop (develop)
+a)
+- git push origin devR (devR)//esto es como una copia de seguridad
+//si se va hacer la pull request, es hasta aqui.
+
+//sino se hace la pull request, hacer:
+b)
+- git checkout develop
+
+- git merge devR (develop)
+- git push origin develop (develop)
 
 A ver si ahora nos sale todo ;)
 SUERTE!!
